@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block header %}
+{% endblock header %}
+{% block content %}
+  {% if not res %}
+    <h2>New payment</h2>
+    <form action="/payment" method="post" >
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button name='submit'>Add payment</button>
+    </form>
+  {% else %}
+    <h2>{{ res }}</h2>
+    <div>
+      <p></p>
+      <p><a href="/payment">Add new payment</a></p>
+      <p><a href="/history">Show status payment</a></p>
+    </div>
+  {% endif %}
+{% endblock content %}
